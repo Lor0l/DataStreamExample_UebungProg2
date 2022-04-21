@@ -18,7 +18,7 @@ class Example3 {
      * Save member values ('status') to file
      * @param filename
      */
-    void save2File(String filename) throws IOException {
+    void save2File(String filename) throws IOException, NullPointerException {
         /*                                                                    //Integer zu Strings
                                                                             //Erzeuge String Array von gleicher Länge wie "values[]"
         String[] valuesAsStrings = new String[this.values.length];
@@ -43,6 +43,10 @@ class Example3 {
         }
 
         */
+        //Zweiter Versuch
+        if (this.values == null) {
+            throw new NullPointerException();
+        }
 
         OutputStream os = new FileOutputStream(filename);
         DataOutputStream dos = new DataOutputStream(os);
@@ -89,7 +93,7 @@ class Example3 {
             this.values[i] = Integer.parseInt(values[i]);
         }
     */
-
+        //Zweiter Versuch
         InputStream is = new FileInputStream(filename);
         DataInputStream dis = new DataInputStream(is);
 
