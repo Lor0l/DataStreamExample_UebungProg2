@@ -6,6 +6,7 @@ import java.io.*;
 class Example1 {
     private int value;
 
+
     Example1(int value) {
         this.value = value;
     }

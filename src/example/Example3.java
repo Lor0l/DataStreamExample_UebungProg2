@@ -1,5 +1,6 @@
 package example;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 
 class Example3 {
@@ -17,9 +18,8 @@ class Example3 {
      * Save member values ('status') to file
      * @param filename
      */
-    void save2File(String filename) throws FileNotFoundException {
-
-                                                                            //Integer zu Strings
+    void save2File(String filename) throws IOException {
+        /*                                                                    //Integer zu Strings
                                                                             //Erzeuge String Array von gleicher Länge wie "values[]"
         String[] valuesAsStrings = new String[this.values.length];
 
@@ -42,6 +42,17 @@ class Example3 {
             ps.println(valuesAsStrings[i]);
         }
 
+        */
+
+        OutputStream os = new FileOutputStream(filename);
+        DataOutputStream dos = new DataOutputStream(os);
+
+        int length = this.values.length;
+        dos.writeInt(length);
+
+        for (int i = 0; i < length; i++) {
+            dos.writeInt(this.values[i]);
+        }
 
 
 
@@ -52,7 +63,7 @@ class Example3 {
      * @param filename
      */
     void restoreFromFile(String filename) throws IOException {
-
+        /*
                                                                             //BufferedReader erzeugen
         InputStream is = new FileInputStream(filename);
         InputStreamReader irs = new InputStreamReader(is);
@@ -77,6 +88,18 @@ class Example3 {
         for(int i = 0; i < values.length; i++){
             this.values[i] = Integer.parseInt(values[i]);
         }
+    */
+
+        InputStream is = new FileInputStream(filename);
+        DataInputStream dis = new DataInputStream(is);
+
+        int length = dis.readInt();
+        this.values = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            this.values[i] = dis.readInt();
+        }
+
 
     }
 }

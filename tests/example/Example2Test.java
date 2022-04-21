@@ -29,6 +29,7 @@ public class Example2Test {
         Assert.assertEquals(exampleInt, exaRead.getIntValue());
         Assert.assertEquals(exampleString, exaRead.getStringValue());
 
+
     }
 
     //Erfolgreich wenn keine File zum auslesen Vorhanden und Exception geworfen wird
